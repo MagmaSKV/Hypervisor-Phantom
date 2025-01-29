@@ -44,6 +44,7 @@ acquire_qemu_source() {
     if ! prmt::yes_or_no "$(fmtr::ask 'Delete and re-download the QEMU source?')"; then
       fmtr::info "Keeping existing directory. Skipping re-download."
       cd "$QEMU_DIR" || { fmtr::fatal "Failed to change to QEMU directory: $QEMU_DIR"; exit 1; }
+      find . -name "*.bef" | while read file; do mv "$file" "${file%.bef}"; done
       return
     fi
     sudo rm -rf "$QEMU_DIR" || { fmtr::fatal "Failed to remove existing directory: $QEMU_DIR"; exit 1; }
@@ -82,7 +83,7 @@ patch_qemu() {
 
   fmtr::info "Applying patch to QEMU..."
 
-  patch -fsp1 < "${PATCH_DIR}/${QEMU_PATCH}" &>> "$LOG_FILE" || {
+  patch -fsp1 -b --suffix=.bef < "${PATCH_DIR}/${QEMU_PATCH}" &>> "$LOG_FILE" || {
     fmtr::error "Failed to apply patch ${QEMU_PATCH}!"
     fmtr::fatal "Patch application failed. Please check the log for errors."
     exit 1
