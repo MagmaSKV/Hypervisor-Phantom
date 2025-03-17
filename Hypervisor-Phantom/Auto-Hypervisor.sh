@@ -8,6 +8,7 @@ detect_distro() {
       opensuse-tumbleweed|opensuse-slowroll|opensuse-leap) DISTRO="openSUSE" ;;
       debian|ubuntu|linuxmint|kali) DISTRO="Debian" ;;
       fedora|centos|rhel|rocky) DISTRO="Fedora" ;;
+      gentoo) DISTRO="Gentoo" ;;
       *) DISTRO="Unknown ($distro_id)" ;;
     esac
   else
@@ -19,6 +20,8 @@ detect_distro() {
       DISTRO="openSUSE"
     elif command -v dnf &>/dev/null; then
       DISTRO="Fedora"
+    elif command -v emerge &>/dev/null; then
+      DISTRO="Gentoo"
     else
       DISTRO="Unknown"
     fi
