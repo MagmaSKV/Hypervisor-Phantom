@@ -29,6 +29,11 @@ install_req_pkgs() {
       INSTALL_CMD="sudo dnf -yq install"
       CHECK_CMD="rpm -q"
       ;;
+    Gentoo)
+      PKG_MANAGER="emerge"
+      INSTALL_CMD="sudo emerge -v"
+      CHECK_CMD="qlist -I"
+      ;;
     *)
       fmtr::error "Unsupported distribution: $DISTRO"
       exit 1
