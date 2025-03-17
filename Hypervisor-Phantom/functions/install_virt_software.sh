@@ -24,6 +24,10 @@ REQUIRED_PKGS_Fedora=(
   @virtualization
 )
 
+REQUIRED_PKGS_Gentoo=(
+  qemu edk2-bin libvirt dnsmasq virt-manager
+)
+
 configure_firewall_arch() {
   fmtr::log "Trying to configure firewall..."
   if pacman -Qs "iptables-nft" &>> "$LOG_FILE"; then
