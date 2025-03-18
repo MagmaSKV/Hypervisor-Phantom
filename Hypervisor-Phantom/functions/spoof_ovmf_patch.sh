@@ -39,7 +39,7 @@ REQUIRED_PKGS_Fedora=(
 )
 
 REQUIRED_PKGS_Gentoo=(
-  gcc make iasl git nasm python util-linux iasl
+  gcc make iasl git nasm python util-linux
 )
 
 acquire_edk2_source() {
