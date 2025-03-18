@@ -38,6 +38,10 @@ REQUIRED_PKGS_Fedora=(
   gcc gcc-c++ make acpica-tools git nasm python3 libuuid-devel
 )
 
+REQUIRED_PKGS_Gentoo=(
+  gcc make iasl git nasm python util-linux iasl
+)
+
 acquire_edk2_source() {
   mkdir -p "$SRC_DIR" && cd "$SRC_DIR"
 
