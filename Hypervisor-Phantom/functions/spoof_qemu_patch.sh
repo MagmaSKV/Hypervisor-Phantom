@@ -42,6 +42,9 @@ REQUIRED_PKGS_Fedora=(
   ninja-build pixman-devel python3 zlib-devel gnupg2
 )
 
+REQUIRED_PKGS_Gentoo=(
+   app-arch/bzip2 gcc make patch dmidecode dev-libs/glib dev-libs/libusb dev-build/ninja packaging dev-python/sphinx sphinx-rtd-theme app-crypt/gnupg
+)
 
 acquire_qemu_source() {
   mkdir -p "$SRC_DIR" && cd "$SRC_DIR"
